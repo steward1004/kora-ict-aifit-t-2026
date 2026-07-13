@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyCalm - 청소년을 위한 휴식 공간</title>
+  <!-- Google Fonts & FontAwesome CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="app-logo">MyCalm</div>
+      <div class="app-logo-sub" style="font-size: 0.8rem; color: var(--text-muted);">청소년 마음 쉼터</div>
+    </header>
+
+    <!-- Greeting Box -->
+    <section class="glass-card greeting-box">
+      <h2 class="greeting-text" id="greeting-txt">좋은 하루입니다!</h2>
+      <p class="sub-greeting">오늘도 MyCalm에 잘 오셨어요. 지친 마음을 잠시 쉬어보세요.</p>
+    </section>
+
+    <!-- Dashboard Status Grid -->
+    <section class="status-grid">
+      <!-- Streak Status Card -->
+      <div class="glass-card status-card">
+        <div class="status-icon">🔥</div>
+        <div class="status-value" id="streak-val">0일</div>
+        <div class="status-label">연속 휴식 스트릭</div>
+      </div>
+      
+      <!-- Exam D-Day Status Card -->
+      <div class="glass-card status-card">
+        <div class="status-icon">🎓</div>
+        <div class="status-value" id="dday-val">D-?</div>
+        <div class="status-label">2027 수능 D-Day</div>
+      </div>
+    </section>
+
+    <!-- Menu Title -->
+    <h3 class="menu-section-title">프로그램 메뉴</h3>
+
+    <!-- Menu Navigation Items -->
+    <nav class="menu-list" aria-label="메인 메뉴">
+      <!-- Breathing Session Link -->
+      <a href="breathing.html" class="menu-item">
+        <div class="menu-item-left">
+          <span class="menu-item-icon">🫁</span>
+          <div class="menu-item-info">
+            <span class="menu-item-title">4-7-8 호흡 세션</span>
+            <span class="menu-item-desc">시험 전 불안을 가라앉히는 호흡 5분</span>
+          </div>
+        </div>
+        <span class="menu-item-arrow">➔</span>
+      </a>
+
+      <!-- Sleep Stories Link -->
+      <a href="stories.html" class="menu-item">
+        <div class="menu-item-left">
+          <span class="menu-item-icon">🌌</span>
+          <div class="menu-item-info">
+            <span class="menu-item-title">Sleep Stories</span>
+            <span class="menu-item-desc">평온한 수면을 유도하는 빗소리와 바람소리</span>
+          </div>
+        </div>
+        <span class="menu-item-arrow">➔</span>
+      </a>
+
+      <!-- Bedtime Routine Link -->
+      <a href="routine.html" class="menu-item">
+        <div class="menu-item-left">
+          <span class="menu-item-icon">⏰</span>
+          <div class="menu-item-info">
+            <span class="menu-item-title">오늘의 루틴</span>
+            <span class="menu-item-desc">취침 전 루틴 관리 및 스마트 알림 설정</span>
+          </div>
+        </div>
+        <span class="menu-item-arrow">➔</span>
+      </a>
+
+      <!-- Parents Summary Link -->
+      <a href="parent-report.html" class="menu-item">
+        <div class="menu-item-left">
+          <span class="menu-item-icon">🔒</span>
+          <div class="menu-item-info">
+            <span class="menu-item-title">학부모 리포트</span>
+            <span class="menu-item-desc">주간 이용 현황 요약 (보호자 모드)</span>
+          </div>
+        </div>
+        <span class="menu-item-arrow">➔</span>
+      </a>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>&copy; 2026 MyCalm. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/background.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. 시간대별 인사말 구현
+      function updateGreeting() {
+        const greetingEl = document.getElementById('greeting-txt');
+        const hour = new Date().getHours();
+        let greeting = '';
+
+        if (hour >= 5 && hour < 12) {
+          greeting = '상쾌하고 차분한 아침입니다 ☀️';
+        } else if (hour >= 12 && hour < 17) {
+          greeting = '맑고 집중하기 좋은 오후입니다 🌤️';
+        } else if (hour >= 17 && hour < 21) {
+          greeting = '오늘 하루도 애쓰셨어요. 편안한 저녁입니다 🌙';
+        } else {
+          greeting = '깊은 휴식이 필요한 밤입니다 🌟';
+        }
+
+        if (greetingEl) {
+          greetingEl.textContent = greeting;
+        }
+      }
+
+      // 2. 수능 D-Day 계산 (2026-11-19)
+      function updateDday() {
+        const ddayEl = document.getElementById('dday-val');
+        const targetDate = new Date('2026-11-19T00:00:00'); // 2026년 수능 날짜
+        const today = new Date();
+        
+        // 날짜만 남기도록 정규화
+        today.setHours(0, 0, 0, 0);
+        targetDate.setHours(0, 0, 0, 0);
+
+        const diffTime = targetDate.getTime() - today.getTime();
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        if (ddayEl) {
+          if (diffDays > 0) {
+            ddayEl.textContent = `D-${diffDays}`;
+          } else if (diffDays === 0) {
+            ddayEl.textContent = 'D-Day';
+          } else {
+            ddayEl.textContent = `D+${Math.abs(diffDays)}`;
+          }
+        }
+      }
+
+      // 3. 스트릭 값 바인딩
+      function updateStreakUI() {
+        const streakEl = document.getElementById('streak-val');
+        const log = getActivityLog();
+        const today = getTodayKey();
+        
+        // 마지막 활동일이 어제나 오늘인 경우 스트릭 유지, 그 외에는 0일로 유휴 판정
+        let activeStreak = 0;
+        if (log.lastActiveDate) {
+          const diff = getDateDiffInDays(log.lastActiveDate, today);
+          if (diff === 0 || diff === 1) {
+            activeStreak = log.streak;
+          }
+        }
+        
+        if (streakEl) {
+          streakEl.textContent = `${activeStreak}일`;
+        }
+      }
+
+      // 실행
+      updateGreeting();
+      updateDday();
+      updateStreakUI();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,841 @@
+/* MyCalm MVP 공통 스타일시트 - 소프트 라벤더 & 페일 블루 테마 */
+
+:root {
+  /* 테마 컬러 정의 */
+  --lavender-light: #f3f0fc;
+  --lavender-medium: #c2b9e6;
+  --lavender-dark: #6e64a6;
+  --lavender-deep: #3b326b;
+  --pale-blue-light: #e0f2f1;
+  --pale-blue-medium: #80deea;
+  --pale-blue-dark: #00838f;
+  
+  --bg-veil-gradient: linear-gradient(135deg, rgba(59, 50, 107, 0.65) 0%, rgba(15, 23, 42, 0.8) 100%);
+  
+  --text-white: #ffffff;
+  --text-pale: #e2e8f0;
+  --text-muted: #cbd5e1;
+  
+  --card-bg: rgba(255, 255, 255, 0.08);
+  --card-border: rgba(255, 255, 255, 0.12);
+  --card-glow: rgba(194, 185, 230, 0.15);
+  
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", helvetica, sans-serif;
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  color: var(--text-white);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1.5rem 1rem;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* -------------------------------------
+   배경 슬라이드쇼 및 가독성 베일 (Injected dynamically)
+   ------------------------------------- */
+.app-bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.app-bg-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 2.5s ease-in-out;
+  z-index: -3;
+}
+
+.app-bg-slide.active {
+  opacity: 1;
+}
+
+.app-bg__veil {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-veil-gradient);
+  z-index: -2;
+}
+
+/* -------------------------------------
+   공통 레이아웃 구조
+   ------------------------------------- */
+.app-wrapper {
+  width: 100%;
+  max-width: 480px; /* 모바일 우선 컴팩트 레이아웃 */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 10;
+  padding-bottom: 2rem;
+}
+
+/* 상단 헤더 & 네비게이션 */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.2rem;
+  margin-top: 0.5rem;
+}
+
+.btn-back {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-white);
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.btn-back:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(-2px);
+}
+
+.app-logo {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--lavender-light);
+  text-shadow: 0 0 10px rgba(194, 185, 230, 0.3);
+}
+
+/* 글래스 카드 공통 */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px) saturate(110%);
+  -webkit-backdrop-filter: blur(20px) saturate(110%);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  padding: 1.8rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 32px var(--card-glow);
+}
+
+/* -------------------------------------
+   홈 화면 (index.html) 전용 스타일
+   ------------------------------------- */
+.greeting-box {
+  text-align: left;
+}
+
+.greeting-text {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 0.4rem;
+}
+
+.sub-greeting {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* 스트릭 & 수능 D-Day 대시보드 */
+.status-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.status-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.2rem 1rem;
+  text-align: center;
+}
+
+.status-icon {
+  font-size: 2rem;
+  animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.1); opacity: 1; }
+}
+
+.status-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--lavender-light);
+  letter-spacing: -0.01em;
+}
+
+.status-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* 메뉴 리스트 */
+.menu-section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--lavender-medium);
+  margin-left: 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem;
+  text-decoration: none;
+  color: var(--text-white);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(194, 185, 230, 0.25);
+  transform: translateY(-2px);
+}
+
+.menu-item-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.menu-item-icon {
+  font-size: 1.5rem;
+}
+
+.menu-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.menu-item-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.menu-item-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.menu-item-arrow {
+  color: var(--lavender-medium);
+  font-size: 1.1rem;
+  transition: transform 0.25s ease;
+}
+
+.menu-item:hover .menu-item-arrow {
+  transform: translateX(3px);
+}
+
+/* -------------------------------------
+   4-7-8 호흡 세션 (breathing.html)
+   ------------------------------------- */
+.breathing-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+}
+
+.breathing-visual-container {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.breathing-circle-outer {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: rgba(194, 185, 230, 0.03);
+  border: 2px dashed rgba(194, 185, 230, 0.15);
+}
+
+.breathing-circle-glow {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(144, 202, 249, 0.3) 0%, rgba(194, 185, 230, 0) 70%);
+  filter: blur(15px);
+  transition: transform 1s ease;
+}
+
+.breathing-circle {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--lavender-medium) 0%, #90caf9 100%);
+  box-shadow: 0 0 30px rgba(144, 202, 249, 0.4);
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 호흡 애니메이션 상태 클래스 */
+.breathing-circle.inhale {
+  transform: scale(1.6);
+  box-shadow: 0 0 45px rgba(194, 185, 230, 0.6);
+}
+
+.breathing-circle.hold {
+  transform: scale(1.6);
+  box-shadow: 0 0 50px rgba(144, 202, 249, 0.7);
+  animation: holdingPulse 2s infinite alternate;
+}
+
+.breathing-circle.exhale {
+  transform: scale(1);
+  box-shadow: 0 0 25px rgba(144, 202, 249, 0.3);
+}
+
+@keyframes holdingPulse {
+  0% { filter: brightness(1); }
+  100% { filter: brightness(1.2); }
+}
+
+.breathing-guide-text {
+  font-size: 1.3rem;
+  font-weight: 700;
+  min-height: 2rem;
+  color: var(--text-white);
+  transition: opacity 0.3s ease;
+}
+
+.breathing-timer {
+  font-size: 2.5rem;
+  font-family: monospace;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-pale);
+}
+
+.btn-start {
+  background: linear-gradient(135deg, var(--lavender-medium) 0%, #90caf9 100%);
+  border: none;
+  color: var(--lavender-deep);
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(144, 202, 249, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-start:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(144, 202, 249, 0.5);
+}
+
+.btn-start:active {
+  transform: translateY(1px);
+}
+
+.btn-start.running {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-pale);
+  box-shadow: none;
+}
+
+/* -------------------------------------
+   Sleep Stories (stories.html)
+   ------------------------------------- */
+.story-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.story-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.story-card.active {
+  border-color: rgba(144, 202, 249, 0.4);
+  background: rgba(144, 202, 249, 0.05);
+}
+
+.story-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.story-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.story-duration {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* 오디오 컨트롤 플레이어 커스텀화 */
+.story-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-play-story {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-white);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.btn-play-story:hover {
+  background: var(--text-white);
+  color: var(--lavender-deep);
+  transform: scale(1.05);
+}
+
+.btn-play-story svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* 진행 상황 및 시간 표시 */
+.playback-progress-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.progress-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--lavender-medium), #90caf9);
+  border-radius: 100px;
+  transition: width 0.1s linear;
+}
+
+.time-tooltip {
+  font-size: 0.75rem;
+  font-family: monospace;
+  color: var(--text-muted);
+  min-width: 32px;
+}
+
+/* -------------------------------------
+   오늘의 루틴 (routine.html)
+   ------------------------------------- */
+.sleep-time-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.time-picker-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.time-input {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 0.5rem 0.8rem;
+  color: var(--text-white);
+  font-size: 1rem;
+  outline: none;
+  font-family: monospace;
+  cursor: pointer;
+}
+
+.time-input:focus {
+  border-color: var(--lavender-medium);
+}
+
+.btn-save-time {
+  background: rgba(194, 185, 230, 0.2);
+  border: 1px solid rgba(194, 185, 230, 0.3);
+  color: var(--text-white);
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-save-time:hover {
+  background: var(--lavender-medium);
+  color: var(--lavender-deep);
+}
+
+/* 루틴 추가 폼 */
+.routine-input-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.routine-input {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  color: var(--text-white);
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.routine-input:focus {
+  border-color: var(--lavender-medium);
+}
+
+.btn-add-routine {
+  background: var(--lavender-medium);
+  color: var(--lavender-deep);
+  border: none;
+  border-radius: 12px;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-add-routine:hover {
+  transform: scale(1.05);
+}
+
+.btn-add-routine svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+}
+
+/* 루틴 체크리스트 항목 */
+.routine-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  list-style: none;
+}
+
+.routine-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 0.9rem 1.1rem;
+  border-radius: 16px;
+  transition: all 0.25s ease;
+}
+
+.routine-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.routine-item-left {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex: 1;
+}
+
+/* 체크박스 커스텀 */
+.checkbox-wrapper {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.checkbox-hidden {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox-custom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.checkbox-wrapper:hover .checkbox-custom {
+  border-color: var(--lavender-medium);
+}
+
+.checkbox-hidden:checked ~ .checkbox-custom {
+  background: var(--lavender-medium);
+  border-color: var(--lavender-medium);
+}
+
+.checkbox-custom::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--lavender-deep);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-hidden:checked ~ .checkbox-custom::after {
+  display: block;
+}
+
+.routine-text {
+  font-size: 0.95rem;
+  color: var(--text-pale);
+  transition: all 0.25s ease;
+}
+
+.routine-item.completed .routine-text {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.btn-delete-routine {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  opacity: 0.6;
+}
+
+.routine-item:hover .btn-delete-routine {
+  opacity: 1;
+}
+
+.btn-delete-routine:hover {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.btn-delete-routine svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+/* -------------------------------------
+   학부모 리포트 (parent-report.html)
+   ------------------------------------- */
+.pin-prompt-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.pin-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--lavender-light);
+}
+
+.pin-inputs-wrapper {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.pin-digit {
+  width: 48px;
+  height: 56px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  color: var(--text-white);
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  outline: none;
+  font-family: monospace;
+  transition: all 0.25s ease;
+}
+
+.pin-digit:focus {
+  border-color: var(--lavender-medium);
+  box-shadow: 0 0 10px rgba(194, 185, 230, 0.3);
+}
+
+.pin-error-msg {
+  color: #ef4444;
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-height: 1.2rem;
+}
+
+/* 리포트 대시보드 구조 */
+.report-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.report-summary-text {
+  font-size: 0.95rem;
+  color: var(--text-pale);
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.report-stat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.report-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.2rem;
+  border-radius: 18px;
+}
+
+.report-stat-icon {
+  font-size: 2rem;
+}
+
+.report-stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.report-stat-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.report-stat-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--lavender-light);
+}
+
+/* 푸터 */
+.app-footer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 1rem;
+}

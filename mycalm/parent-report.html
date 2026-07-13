@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>학부모 리포트 - MyCalm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <!-- Header -->
+    <header class="app-header">
+      <a href="index.html" class="btn-back">
+        <span>◀</span> 홈으로
+      </a>
+      <div class="app-logo">MyCalm</div>
+    </header>
+
+    <!-- PIN Authentication Screen (Visible by default) -->
+    <main class="glass-card pin-prompt-box" id="pin-screen">
+      <div class="status-icon">🔒</div>
+      <h2 class="pin-title" id="pin-instruction">PIN 비밀번호 확인</h2>
+      <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">
+        자녀의 상세 개인정보 보호 및 학부모 리포트 조회를 위해 4자리 PIN 비밀번호를 입력해주세요.
+      </p>
+
+      <!-- 4 Digit Pin Input Field -->
+      <div class="pin-inputs-wrapper" id="pin-input-container">
+        <input type="password" maxlength="1" class="pin-digit" pattern="[0-9]*" inputmode="numeric">
+        <input type="password" maxlength="1" class="pin-digit" pattern="[0-9]*" inputmode="numeric" disabled>
+        <input type="password" maxlength="1" class="pin-digit" pattern="[0-9]*" inputmode="numeric" disabled>
+        <input type="password" maxlength="1" class="pin-digit" pattern="[0-9]*" inputmode="numeric" disabled>
+      </div>
+
+      <div class="pin-error-msg" id="pin-error-text"></div>
+    </main>
+
+    <!-- Parents Report Dashboard Screen (Hidden by default) -->
+    <main class="glass-card report-dashboard" id="report-screen" style="display: none;">
+      <h2 style="font-size: 1.4rem; font-weight: 700; text-align: center; color: var(--lavender-light);">
+        📋 학부모 주간 요약 리포트
+      </h2>
+      <p class="report-summary-text">
+        자녀의 수면 루틴과 심신 안정 활동에 대한 주간 요약 통계입니다.<br>
+        <span style="color: var(--lavender-medium); font-size: 0.8rem;">※ 자녀의 사생활을 존중하기 위해 구체적인 활동 내역 및 일기는 노출되지 않습니다.</span>
+      </p>
+
+      <div class="report-stat-list">
+        <!-- Stat Item 1: Weekly usage days -->
+        <div class="report-stat-item">
+          <span class="report-stat-icon">📅</span>
+          <div class="report-stat-info">
+            <span class="report-stat-label">최근 7일간 참여 일수</span>
+            <span class="report-stat-value" id="stat-weekly-days">0일 / 7일</span>
+          </div>
+        </div>
+
+        <!-- Stat Item 2: Average bedtime preparation -->
+        <div class="report-stat-item">
+          <span class="report-stat-icon">🛌</span>
+          <div class="report-stat-info">
+            <span class="report-stat-label">평균 수면 준비 시각</span>
+            <span class="report-stat-value" id="stat-avg-bedtime">23:00 (목표)</span>
+          </div>
+        </div>
+
+        <!-- Stat Item 3: Current active streak -->
+        <div class="report-stat-item">
+          <span class="report-stat-icon">🔥</span>
+          <div class="report-stat-info">
+            <span class="report-stat-label">현재 연속 참여 스트릭</span>
+            <span class="report-stat-value" id="stat-streak">0일 연속</span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>&copy; 2026 MyCalm. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/background.js"></script>
+  <script src="js/parent-report.js"></script>
+</body>
+</html>

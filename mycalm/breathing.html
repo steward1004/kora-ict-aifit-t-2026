@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4-7-8 호흡 세션 - MyCalm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <!-- Header -->
+    <header class="app-header">
+      <a href="index.html" class="btn-back">
+        <span>◀</span> 홈으로
+      </a>
+      <div class="app-logo">MyCalm</div>
+    </header>
+
+    <!-- Breathing Body Card -->
+    <main class="glass-card breathing-box">
+      <h2 style="font-size: 1.4rem; font-weight: 700;">4-7-8 호흡법</h2>
+      <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.4;">
+        긴장을 해소하고 시험불안을 줄여주는 호흡 훈련입니다.<br>
+        원을 따라 4초간 마시고, 7초간 멈추고, 8초간 길게 내쉽니다.
+      </p>
+
+      <!-- Circle Visualization Area -->
+      <div class="breathing-visual-container">
+        <div class="breathing-circle-outer"></div>
+        <div class="breathing-circle-glow" id="circle-glow"></div>
+        <div class="breathing-circle" id="breath-circle">
+          <!-- Central instruction inside the circle -->
+          <span style="font-size: 0.85rem; font-weight: 700; color: var(--lavender-deep);" id="inner-label">대기 중</span>
+        </div>
+      </div>
+
+      <!-- Instruction text -->
+      <div class="breathing-guide-text" id="guide-text">시작 버튼을 눌러 호흡을 시작하세요.</div>
+
+      <!-- Time counter (5 minutes = 300s) -->
+      <div class="breathing-timer" id="timer-display">05:00</div>
+
+      <!-- Control Button -->
+      <button class="btn-start" id="btn-toggle">세션 시작</button>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>&copy; 2026 MyCalm. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/background.js"></script>
+  <script src="js/breathing.js"></script>
+</body>
+</html>
