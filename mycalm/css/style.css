@@ -55,6 +55,41 @@ body {
   height: 100%;
   z-index: -2;
   overflow: hidden;
+  pointer-events: none;
+  background: radial-gradient(circle at 15% 15%, rgba(159, 106, 255, 0.18), transparent 28%),
+              radial-gradient(circle at 85% 15%, rgba(86, 199, 255, 0.14), transparent 24%),
+              radial-gradient(circle at 50% 85%, rgba(248, 155, 255, 0.1), transparent 22%);
+}
+
+.app-bg-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.18), transparent 14%),
+              radial-gradient(circle at 80% 25%, rgba(192, 217, 255, 0.14), transparent 16%),
+              radial-gradient(circle at 60% 80%, rgba(201, 148, 255, 0.12), transparent 18%);
+  z-index: -1;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.app-bg-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 90px 90px;
+  opacity: 0.24;
+  mix-blend-mode: overlay;
+  animation: drift 36s linear infinite;
+  z-index: -1;
+}
+
+@keyframes drift {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-28px, 28px); }
+  100% { transform: translate(0, 0); }
 }
 
 .app-bg-slide {
@@ -65,9 +100,13 @@ body {
   height: 100%;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   opacity: 0;
   transition: opacity 2.5s ease-in-out;
   z-index: -3;
+  filter: saturate(1.2) contrast(1.05);
+  transform: scale(1.02);
+  background-blend-mode: overlay;
 }
 
 .app-bg-slide.active {
@@ -80,7 +119,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--bg-veil-gradient);
+  background: linear-gradient(135deg, rgba(59, 50, 107, 0.72) 0%, rgba(15, 23, 42, 0.94) 100%);
   z-index: -2;
 }
 

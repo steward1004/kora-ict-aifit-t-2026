@@ -7,11 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const slide1 = document.createElement('div');
   slide1.className = 'app-bg-slide active';
-  slide1.style.backgroundImage = "url('assets/bg/bg1.jpg')";
+  slide1.style.backgroundImage = "linear-gradient(135deg, rgba(137, 93, 255, 0.36), rgba(23, 32, 72, 0.68)), url('assets/bg/bg1.jpg')";
+  slide1.style.backgroundBlendMode = 'overlay';
   
   const slide2 = document.createElement('div');
   slide2.className = 'app-bg-slide';
-  slide2.style.backgroundImage = "url('assets/bg/bg2.jpg')";
+  slide2.style.backgroundImage = "linear-gradient(140deg, rgba(64, 207, 255, 0.28), rgba(22, 28, 65, 0.72)), url('assets/bg/bg2.jpg')";
+  slide2.style.backgroundBlendMode = 'overlay';
   
   const veil = document.createElement('div');
   veil.className = 'app-bg__veil';
