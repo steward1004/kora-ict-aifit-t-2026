@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixel Grug</title>
+    <meta
+      name="description"
+      content="Tiny Pixel Stories for Better Days. 매일 한 문장, 한 개의 픽셀 캐릭터, 그리고 작은 미소."
+    />
+    <script>
+      (function () {
+        const storedTheme = localStorage.getItem('pg-theme');
+        const storedLang = localStorage.getItem('pg-lang');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+        const lang = storedLang || (navigator.language.startsWith('ja') ? 'ja' : navigator.language.startsWith('en') ? 'en' : 'ko');
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.setAttribute('lang', lang);
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="#hero" class="brand">
+          <span class="brand__mark">◈</span>
+          <span data-i18n="brand">Pixel Grug</span>
+        </a>
+
+        <button class="nav-toggle" aria-expanded="false" aria-label="Open navigation">
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="nav-links">
+          <a href="#about" data-i18n="nav.about">앱 소개</a>
+          <a href="#features" data-i18n="nav.features">기능</a>
+          <a href="#vision" data-i18n="nav.vision">비전</a>
+          <a href="#contact" data-i18n="nav.contact">연락</a>
+        </nav>
+
+        <div class="controls">
+          <div class="segmented" aria-label="Language switcher">
+            <button class="lang-btn active" data-lang="ko">KO</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="ja">日</button>
+          </div>
+          <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">☀</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero section" id="hero">
+        <div class="container hero-grid">
+          <div class="hero__content reveal">
+            <p class="eyebrow" data-i18n="hero.eyebrow">Tiny Pixel Stories for Better Days.</p>
+            <h1 data-i18n="hero.title">매일 한 문장, 한 개의 픽셀 캐릭터, 그리고 작은 미소.</h1>
+            <p class="hero__lead" data-i18n="hero.lead">
+              Pixel Grug는 하루 10초로 마음을 정리하고, 오늘의 픽셀 친구를 만나며 작은 기분 전환을 만드는 감성 앱입니다.
+            </p>
+            <div class="hero__actions">
+              <a href="#features" class="btn btn--primary" data-i18n="hero.ctaPrimary">앱 둘러보기</a>
+              <a href="#contact" class="btn btn--ghost" data-i18n="hero.ctaSecondary">시작하기</a>
+            </div>
+          </div>
+
+          <div class="hero__visual reveal">
+            <article class="daily-card" aria-label="Daily Pixel Demo">
+              <div class="daily-card__top">
+                <span class="badge" data-i18n="daily.badge">오늘의 픽셀</span>
+                <button id="shufflePixel" class="shuffle-btn" data-i18n="daily.shuffle">다른 친구 만나기</button>
+              </div>
+              <img id="pixelImage" src="assets/hero-dragon.svg" alt="픽셀 캐릭터" class="daily-card__image" />
+              <h2 id="pixelName">드래곤</h2>
+              <p id="pixelQuote" data-i18n="daily.quote">오늘도 아주 가볍게 시작해요.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--inverse" id="about">
+        <div class="container about-grid">
+          <div class="quote reveal">
+            <p data-i18n="quote.text">“하루 10초면 충분해요. 사진 한 장을 남기지 않아도, 마음을 기록할 수 있어요.”</p>
+            <span data-i18n="quote.author">- Pixel Grug</span>
+          </div>
+          <div class="steps reveal">
+            <h2 data-i18n="about.title">세 가지 작은 루틴</h2>
+            <ol>
+              <li data-i18n="about.step1">오늘의 픽셀을 만나요.</li>
+              <li data-i18n="about.step2">한 문장으로 감정을 남겨요.</li>
+              <li data-i18n="about.step3">작은 위로를 저장해두세요.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="features">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow" data-i18n="features.eyebrow">핵심 기능</p>
+            <h2 data-i18n="features.title">하루가 가볍게 움직이는 6개의 경험</h2>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card reveal"><h3 data-i18n="features.daily">Daily Pixel</h3><p data-i18n="features.dailyText">매일 새로 생성되는 픽셀 친구와 함께 하루를 시작합니다.</p></article>
+            <article class="feature-card reveal"><h3 data-i18n="features.wisdom">Tiny Wisdom</h3><p data-i18n="features.wisdomText">당장 큰 해결책이 아니어도, 충분한 위로를 남깁니다.</p></article>
+            <article class="feature-card reveal"><h3 data-i18n="features.collection">Pixel Collection</h3><p data-i18n="features.collectionText">누적된 픽셀 캐릭터와 문장은 작은 추억의 보물이 됩니다.</p></article>
+            <article class="feature-card reveal"><h3 data-i18n="features.variation">AI Variation</h3><p data-i18n="features.variationText">같은 감정도 새롭게 변형된 캐릭터로 다시 만날 수 있습니다.</p></article>
+            <article class="feature-card reveal"><h3 data-i18n="features.widget">Widget</h3><p data-i18n="features.widgetText">바로가기 위젯으로 하루 한 번의 친절을 놓치지 않습니다.</p></article>
+            <article class="feature-card reveal"><h3 data-i18n="features.share">Share Card</h3><p data-i18n="features.shareText">친구에게 나의 오늘을 조용히 전할 수 있는 카드가 생깁니다.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--inverse" id="vision">
+        <div class="container concept-grid">
+          <div class="concept reveal">
+            <p class="eyebrow" data-i18n="vision.eyebrow">핵심 컨셉</p>
+            <h2 data-i18n="vision.title">AI가 매일 새로운 픽셀 친구를 만들어 줍니다.</h2>
+            <p data-i18n="vision.text">기존 명언 앱은 너무 큽니다. Pixel Grug는 하루를 가볍게 전환하는 감성 조각을 만들어 내려 합니다.</p>
+          </div>
+          <div class="vision-cards reveal">
+            <div class="mini-card"><strong data-i18n="vision.ref1Title">고요한 친구</strong><span data-i18n="vision.ref1Text">작은 위로가 필요한 순간, 픽셀 캐릭터가 함께합니다.</span></div>
+            <div class="mini-card"><strong data-i18n="vision.ref2Title">매일의 반복</strong><span data-i18n="vision.ref2Text">하루 10초의 루틴만 있어도 충분한 변화가 생깁니다.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="container cta-panel reveal">
+          <div>
+            <p class="eyebrow" data-i18n="cta.eyebrow">지금 바로 시작</p>
+            <h2 data-i18n="cta.title">오늘의 픽셀을 만나보세요.</h2>
+          </div>
+          <a href="#hero" class="btn btn--primary" data-i18n="cta.button">오늘의 감정 열기</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p data-i18n="footer">Pixel Grug — Tiny Pixel Stories for Better Days.</p>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
