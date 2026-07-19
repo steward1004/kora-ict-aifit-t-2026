@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" shape-rendering="crispEdges">
+  <!-- 배경 그라데이션 및 카드 -->
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
       <stop offset="0%" stop-color="#f7efdf" />
@@ -8,32 +9,60 @@
   <rect width="320" height="240" fill="url(#bg)"/>
   <rect x="36" y="28" width="248" height="184" rx="20" fill="#f8f5ed" stroke="#d9c6aa" stroke-width="4"/>
 
-  <rect x="58" y="68" width="28" height="26" fill="#f0b18d"/>
-  <rect x="84" y="52" width="18" height="18" fill="#f0b18d"/>
-  <rect x="96" y="40" width="18" height="18" fill="#f7d0a7"/>
-  <rect x="114" y="32" width="32" height="18" fill="#ef9f74"/>
-  <rect x="146" y="40" width="18" height="18" fill="#f7d0a7"/>
-  <rect x="164" y="52" width="18" height="18" fill="#f0b18d"/>
-  <rect x="182" y="68" width="28" height="26" fill="#f0b18d"/>
+  <!-- 드래곤 뿔 -->
+  <!-- 왼쪽 뿔 -->
+  <rect x="104" y="48" width="16" height="24" fill="#facc15" rx="4"/>
+  <rect x="112" y="56" width="16" height="16" fill="#eab308" rx="2"/>
+  <!-- 오른쪽 뿔 -->
+  <rect x="200" y="48" width="16" height="24" fill="#facc15" rx="4"/>
+  <rect x="192" y="56" width="16" height="16" fill="#eab308" rx="2"/>
 
-  <rect x="82" y="78" width="154" height="70" fill="#d78a67"/>
-  <rect x="96" y="92" width="126" height="50" fill="#f2c2a1"/>
-  <rect x="84" y="94" width="18" height="26" fill="#b9694c"/>
-  <rect x="218" y="94" width="18" height="26" fill="#b9694c"/>
+  <!-- 드래곤 날개 -->
+  <!-- 왼쪽 날개 -->
+  <rect x="52" y="80" width="28" height="28" fill="#ea580c" rx="6"/>
+  <rect x="48" y="88" width="24" height="16" fill="#c2410c" rx="4"/>
+  <rect x="56" y="80" width="8" height="8" fill="#fdba74"/>
+  <!-- 오른쪽 날개 -->
+  <rect x="240" y="80" width="28" height="28" fill="#ea580c" rx="6"/>
+  <rect x="248" y="88" width="24" height="16" fill="#c2410c" rx="4"/>
+  <rect x="256" y="80" width="8" height="8" fill="#fdba74"/>
 
-  <rect x="122" y="108" width="14" height="14" fill="#31261f"/>
-  <rect x="182" y="108" width="14" height="14" fill="#31261f"/>
-  <rect x="138" y="88" width="46" height="12" fill="#ef9f74"/>
+  <!-- 드래곤 머리 본체 -->
+  <rect x="80" y="72" width="160" height="72" fill="#ef4444" rx="16"/>
+  <rect x="80" y="136" width="160" height="8" fill="#dc2626" rx="4"/> <!-- 턱 섀도우 -->
+  <rect x="84" y="74" width="12" height="4" fill="#fca5a5"/> <!-- 이마 하이라이트 -->
+  <rect x="96" y="72" width="128" height="4" fill="#fca5a5"/>
 
-  <rect x="96" y="144" width="36" height="22" fill="#cf7b58"/>
-  <rect x="188" y="144" width="36" height="22" fill="#cf7b58"/>
-  <rect x="116" y="152" width="88" height="18" fill="#8a4c39"/>
+  <!-- 또렷하고 큰 눈 -->
+  <!-- 왼쪽 눈 -->
+  <rect x="112" y="92" width="16" height="16" fill="#0f172a" rx="4"/>
+  <rect x="112" y="92" width="8" height="8" fill="#ffffff" rx="2"/>
+  <!-- 오른쪽 눈 -->
+  <rect x="192" y="92" width="16" height="16" fill="#0f172a" rx="4"/>
+  <rect x="192" y="92" width="8" height="8" fill="#ffffff" rx="2"/>
 
-  <rect x="74" y="124" width="16" height="28" fill="#b9694c"/>
-  <rect x="230" y="124" width="16" height="28" fill="#b9694c"/>
-  <rect x="228" y="132" width="14" height="14" fill="#f7d0a7"/>
-  <rect x="78" y="132" width="14" height="14" fill="#f7d0a7"/>
+  <!-- 분홍 볼터치 -->
+  <rect x="96" y="110" width="16" height="8" fill="#fda4af" rx="2"/>
+  <rect x="208" y="110" width="16" height="8" fill="#fda4af" rx="2"/>
 
-  <rect x="88" y="166" width="144" height="18" fill="#7e4a37"/>
-  <rect x="104" y="184" width="112" height="10" fill="#5c3829"/>
+  <!-- 드래곤 주둥이 -->
+  <rect x="112" y="112" width="96" height="26" fill="#ffedd5" rx="8"/>
+  <rect x="120" y="134" width="80" height="4" fill="#fed7aa" rx="2"/>
+
+  <!-- 콧구멍 및 입 -->
+  <rect x="142" y="118" width="6" height="6" fill="#7c2d12" rx="1"/>
+  <rect x="172" y="118" width="6" height="6" fill="#7c2d12" rx="1"/>
+  <rect x="152" y="124" width="16" height="4" fill="#7c2d12" rx="1"/>
+
+  <!-- 콧김 불꽃 이펙트 (귀여운 불꽃 연출) -->
+  <rect x="132" y="122" width="8" height="8" fill="#f97316" rx="2"/>
+  <rect x="126" y="126" width="6" height="6" fill="#facc15" rx="1"/>
+  <rect x="180" y="122" width="8" height="8" fill="#f97316" rx="2"/>
+  <rect x="188" y="126" width="6" height="6" fill="#facc15" rx="1"/>
+
+  <!-- 노란색 배 비늘 -->
+  <rect x="112" y="146" width="96" height="26" fill="#facc15" rx="6"/>
+  <rect x="120" y="154" width="80" height="4" fill="#eab308" rx="1"/>
+  <rect x="128" y="164" width="64" height="4" fill="#eab308" rx="1"/>
+  <rect x="104" y="172" width="112" height="6" fill="#c2410c" rx="3"/> <!-- 가슴 전체 섀도우 -->
 </svg>

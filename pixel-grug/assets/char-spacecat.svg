@@ -1,16 +1,66 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" shape-rendering="crispEdges">
+  <!-- 배경 카드 (우주 테마) -->
   <rect width="320" height="240" fill="#161a28"/>
   <rect x="36" y="28" width="248" height="184" rx="20" fill="#20243a" stroke="#4e5a8b" stroke-width="4"/>
 
-  <rect x="86" y="56" width="148" height="24" fill="#9b86ff"/>
-  <rect x="104" y="80" width="112" height="88" fill="#fff3d8"/>
-  <rect x="118" y="94" width="14" height="14" fill="#1d2333"/>
-  <rect x="188" y="94" width="14" height="14" fill="#1d2333"/>
-  <rect x="142" y="118" width="36" height="12" fill="#1d2333"/>
+  <!-- 고양이 귀 (헬멧 내부) -->
+  <!-- 왼쪽 귀 -->
+  <rect x="96" y="66" width="18" height="18" fill="#facc15" rx="3"/>
+  <rect x="100" y="70" width="10" height="12" fill="#fda4af" rx="2"/>
+  <!-- 오른쪽 귀 -->
+  <rect x="206" y="66" width="18" height="18" fill="#facc15" rx="3"/>
+  <rect x="210" y="70" width="10" height="12" fill="#fda4af" rx="2"/>
 
-  <rect x="116" y="42" width="88" height="18" fill="#ffe1b2"/>
-  <rect x="92" y="74" width="20" height="20" fill="#f6dca4"/>
-  <rect x="208" y="74" width="20" height="20" fill="#f6dca4"/>
-  <rect x="98" y="130" width="124" height="14" fill="#9b86ff"/>
-  <rect x="110" y="144" width="100" height="8" fill="#6a59ca"/>
+  <!-- 고양이 얼굴 베이스 -->
+  <rect x="92" y="80" width="136" height="60" fill="#fef08a" rx="12"/>
+  
+  <!-- 볼 쉐도우 (입체감) -->
+  <rect x="92" y="120" width="136" height="20" fill="#facc15" rx="10"/>
+
+  <!-- 고양이 수염 -->
+  <rect x="84" y="104" width="12" height="3" fill="#eab308" rx="1"/>
+  <rect x="84" y="112" width="12" height="3" fill="#eab308" rx="1"/>
+  <rect x="224" y="104" width="12" height="3" fill="#eab308" rx="1"/>
+  <rect x="224" y="112" width="12" height="3" fill="#eab308" rx="1"/>
+
+  <!-- 눈 (반짝이는 검고 맑은 눈) -->
+  <!-- 왼쪽 눈 -->
+  <rect x="114" y="94" width="16" height="16" fill="#0f172a" rx="4"/>
+  <rect x="114" y="94" width="8" height="8" fill="#ffffff" rx="2"/>
+  <!-- 오른쪽 눈 -->
+  <rect x="190" y="94" width="16" height="16" fill="#0f172a" rx="4"/>
+  <rect x="190" y="94" width="8" height="8" fill="#ffffff" rx="2"/>
+
+  <!-- 수줍은 분홍 볼터치 -->
+  <rect x="100" y="110" width="12" height="6" fill="#fca5a5" rx="2"/>
+  <rect x="208" y="110" width="12" height="6" fill="#fca5a5" rx="2"/>
+
+  <!-- 코와 귀여운 고양이 입 -->
+  <rect x="156" y="106" width="8" height="4" fill="#fda4af" rx="1"/>
+  
+  <!-- 입 픽셀로 표현 -->
+  <rect x="150" y="114" width="8" height="4" fill="#0f172a" rx="1"/>
+  <rect x="162" y="114" width="8" height="4" fill="#0f172a" rx="1"/>
+  <rect x="158" y="112" width="4" height="4" fill="#0f172a"/>
+
+  <!-- 우주 헬멧 유리창 외곽 및 반사광 -->
+  <rect x="76" y="60" width="168" height="84" fill="none" stroke="#818cf8" stroke-width="4" rx="42"/>
+  
+  <!-- 유리창 반사광 (대각선 라인 - opacity 활용) -->
+  <line x1="120" y1="70" x2="160" y2="134" stroke="#ffffff" stroke-width="6" opacity="0.3" stroke-linecap="round"/>
+  <line x1="106" y1="82" x2="136" y2="130" stroke="#ffffff" stroke-width="4" opacity="0.2" stroke-linecap="round"/>
+
+  <!-- 헬멧 하단 우주복 연결부 -->
+  <rect x="96" y="140" width="128" height="12" fill="#6366f1" rx="6"/>
+  <!-- 우주복 제어판 LED -->
+  <rect x="110" y="144" width="6" height="4" fill="#22c55e" rx="1"/>
+  <rect x="204" y="144" width="6" height="4" fill="#ef4444" rx="1"/>
+
+  <!-- 우주복 몸체 -->
+  <rect x="76" y="152" width="168" height="24" fill="#e2e8f0" rx="8"/>
+  <rect x="76" y="168" width="168" height="8" fill="#cbd5e1" rx="4"/> <!-- 우주복 섀도우 -->
+  
+  <!-- 어깨 패치 장식 -->
+  <rect x="88" y="158" width="14" height="10" fill="#3b82f6" rx="2"/>
+  <rect x="218" y="158" width="14" height="10" fill="#ef4444" rx="2"/>
 </svg>
